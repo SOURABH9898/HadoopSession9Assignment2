@@ -1,0 +1,6 @@
+grunt> A = LOAD '/Sourabh/Session9/Assignment2/Dataset.txt' USING PigStorage(',') AS (name:chararray, col_Undertaken:chararray, dob:chararray, clg_stream:chararray, grade:float, state:chararray, city:chararray);
+grunt> B = FOREACH A GENERATE name, clg_stream, state;
+grunt> C =  FILTER B BY (clg_stream matches 'BE') AND (state matches 'oregon');
+grunt> D = GROUP C ALL;
+grunt> E = FOREACH D GENERATE COUNT(C.name);
+grunt> DUMP E;

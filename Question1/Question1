@@ -1,0 +1,5 @@
+grunt> A = LOAD '/Sourabh/Session9/Assignment2/Dataset.txt' USING PigStorage(',') AS (name:chararray, col_Undertaken:chararray, dob:chararray, clg_stream:chararray, grade:float, state:chararray, city:chararray);
+grunt> B = FILTER A BY (grade < 5.00);
+grunt> C = GROUP B ALL;
+grunt> D = FOREACH C GENERATE COUNT(B.name);
+grunt> DUMP D;
